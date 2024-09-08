@@ -41,7 +41,7 @@ Pickle: To load the pre-trained machine learning model.
 
 bash
 Copy code
-**git clone https://github.com/yourusername/weather-prediction-app.git**
+**git clone [https://github.com/yourusername/weather-prediction-app.git](https://github.com/Anshbhardwaj29/Rain-Predictio-model.git)**
 cd weather-prediction-app
 Install the required Python packages:
 
