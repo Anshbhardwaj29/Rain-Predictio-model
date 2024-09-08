@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rain Prediction</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+
+        body {
+            background: url("https://images.pexels.com/photos/304875/pexels-photo-304875.jpeg?cs=srgb&dl=pexels-veeterzy-304875.jpg&fm=jpg");
+            color: #333;
+        }
+
+        header {
+            background-color: #23414799;
+            padding: 20px;
+            text-align: center;
+            color: white;
+        }
+
+        header h1 {
+            font-size: 2rem;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 20px;
+        }
+
+        .intro {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .intro p {
+            font-size: 1.2rem;
+            color: #ffffff;
+            font-weight: bold;
+        }
+
+        form {
+            background-color: rgba(255, 255, 255, 0.272);
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            max-width: 600px;
+            width: 100%;
+            margin: 0 auto 50px auto; /* Centering form and adding margin-bottom */
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        label {
+            font-size: 14px;
+            color: #fffcfc;
+            font-weight: bold;
+        }
+
+        input[type="number"] {
+            width: 100%;
+            padding: 10px;
+            margin: 8px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            background-color: #3498db;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+
+        button:hover {
+            background-color: #2980b9;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        footer {
+            background-color: #234147;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            position: relative;
+        }
+
+        footer p {
+            margin: 10px 0;
+        }
+
+        footer a {
+            color: #3498db;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            form {
+                padding: 20px;
+                max-width: 90%;
+            }
+        }
+
+        .instructions {
+            background-color: rgb(255, 255, 255);
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            max-width: 600px;
+            width: 100%;
+            margin: 0 auto 50px auto; /* Centering form and adding margin-bottom */
+        }
+
+        .instructions h2 {
+            margin-bottom: 15px;
+            color: #333;
+        }
+
+        .instructions ul {
+            list-style-type: disc;
+            padding-left: 20px;
+        }
+
+        .instructions ul li {
+            margin-bottom: 10px;
+            font-size: 16px;
+            color: #555;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header Section -->
+    <header>
+        <h1>Rain Prediction Website</h1>
+    </header>
+
+    <!-- Main Content -->
+    <div class="container">
+        <div class="intro">
+            <p>Welcome to our Rain Prediction website. Enter the necessary weather details and predict if it will rain!</p>
+        </div>
+
+        <!-- Rain Prediction Form -->
+        <form action="/predict" method="post">
+            <h2>Rain Prediction Form</h2>
+
+            <div class="form-group">
+                <label for="humidity3pm">Humidity at 3 PM:</label>
+                <input type="number" step="any" id="humidity3pm" name="Humidity3pm" required>
+            </div>
+
+            <div class="form-group">
+                <label for="rainToday">Rain Today (0 / 1):</label>
+                <input type="number" id="rainToday" name="RainToday">
+            </div>
+
+            <div class="form-group">
+                <label for="cloud3pm">Cloud Cover at 3 PM (0-9):</label>
+                <input type="number" step="any" id="cloud3pm" name="Cloud3pm">
+            </div>
+
+            <div class="form-group">
+                <label for="humidity9am">Humidity at 9 AM:</label>
+                <input type="number" step="any" id="humidity9am" name="Humidity9am" required>
+            </div>
+
+            <div class="form-group">
+                <label for="cloud9pm">Cloud Cover at 9 PM (0-9):</label>
+                <input type="number" step="any" id="cloud9pm" name="Cloud9pm" required min="0" max="9">
+            </div>
+
+            <div class="form-group">
+                <label for="rainfall">Rainfall (mm):</label>
+                <input type="number" step="any" id="rainfall" name="Rainfall" required>
+            </div>
+
+            <div class="form-group">
+                <label for="windGustSpeed">Wind Gust Speed (km/h):</label>
+                <input type="number" step="any" id="windGustSpeed" name="WindGustSpeed" required>
+            </div>
+
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+
+    <div class="instructions">
+        <h2>Instructions</h2>
+        <ul>
+            <li><strong>Humidity3pm:</strong> Enter the percentage humidity of the wind at 3 PM.</li>
+            <li><strong>RainToday:</strong> Enter 1 if it rained today, or 0 if it did not.</li>
+            <li><strong>Cloud3pm:</strong> Enter the cloud cover at 3 PM in eighths (0 to 8). 0 means no cloud, 8 means full cloud cover.</li>
+            <li><strong>Humidity9am:</strong> Enter the percentage humidity of the wind at 9 AM.</li>
+            <li><strong>Cloud9am:</strong> Enter the cloud cover at 9 AM in eighths (0 to 8).</li>
+            <li><strong>Rainfall:</strong> Specify the amount of rainfall in millimeters.</li>
+            <li><strong>WindGustSpeed:</strong> Enter the speed of the strongest gust during the day in kilometers per hour.</li>
+            <li>Ensure all fields are completed before submitting the form.</li>
+        </ul>
+    </div>
+
+    <!-- Footer Section -->
+    <footer>
+        <p>&copy; 2024 Rain Prediction Website | All Rights Reserved</p>
+        <p>Powered by <a href="#">Your Company</a></p>
+        <p>For further improvements or error reporting, contact us at <a href="mailto:support@example.com">anshbhardwaj2992004@gmail.com</a></p>
+
+    </footer>
+
+</body>
+</html>
